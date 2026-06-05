@@ -1,0 +1,31 @@
+---
+description: Enforce qizheng-siyu structured data and report contracts when editing or generating reports.
+globs: ["**/qz_*.md", "**/*report*.md", "**/shared/contracts/*.md"]
+alwaysApply: false
+---
+
+# 数据契约规则
+
+生成或修改 `qz_structured_data.md` 时，必须符合：
+
+- `shared/contracts/qz_structured_data_contract.md`
+- `antigravity/skills/qz-reader/resources/data_contract.md`
+- `antigravity/skills/qz-reader/resources/validation_rules.md`
+
+生成或修改 `qz_core_report.md` 时，必须符合：
+
+- `shared/contracts/qz_core_report_contract.md`
+- `antigravity/skills/qz-core/resources/report_rules.md`
+- `antigravity/skills/qz-core/resources/qa_rules.md`
+
+生成或修改专题报告时，必须符合：
+
+- `shared/contracts/qz_topic_report_contract.md`
+- `shared/prompts/standard_answer_formats.md`
+
+## 禁止
+
+- Reader 输出解读吉凶。
+- Core 绕过 Reader 数据契约。
+- 专题 Skill 绕过 Core 直接断语。
+- 把 OCR 或用户手工输入当作百分百准确。

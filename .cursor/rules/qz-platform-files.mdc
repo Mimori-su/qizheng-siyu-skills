@@ -1,0 +1,24 @@
+---
+description: Keep platform adapters synchronized across Antigravity, Claude Code, Codex, ChatGPT, and Cursor.
+globs: ["antigravity/**", "claude-code/**", "codex/**", "chatgpt/**", ".cursor/**", "shared/scripts/sync_skills.py"]
+alwaysApply: false
+---
+
+# 平台适配文件规则
+
+本项目同时维护以下平台入口：
+
+- `antigravity/skills/`：Antigravity / Agent Skills 主目录。
+- `claude-code/skills/`：Claude Code Skill 镜像。
+- `codex/skills/`：Codex Skill 镜像。
+- `chatgpt/skills/`：ChatGPT Skill 镜像。
+- `.cursor/rules/`：Cursor 原生项目规则。
+- `claude-code/CLAUDE.md` 与 `claude-code/.claude/commands/`：Claude Code 原生命令入口。
+
+修改 `antigravity/skills/` 后，运行：
+
+```bash
+python shared/scripts/sync_skills.py --targets claude-code codex chatgpt --yes --no-backup
+```
+
+不要手工改动一个镜像目录后忘记同步其他目录。

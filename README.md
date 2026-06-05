@@ -1,0 +1,187 @@
+# qizheng-siyu-skills
+
+`qizheng-siyu-skills` 是一个七政四余多 Skill AI 辅助项目，用于把《九紫辰木马七政四余培训教材.pdf》的学习资料、盘面读取、数据契约、核心分析流程和专题分析拆成可协作的 Skill 体系。项目提供 ChatGPT / Cursor / Codex / Antigravity / Claude Code 五类智能体适配入口。
+
+Skills for Chinese traditional astrology’s **Qizheng Siyu**, developed based on the **Guolao Xingzong** course by **Jiu Zichen**, with charts calculated using **Zheng’an ancient lunar mansions + precession**.
+
+本项目参考 `CNWU16/vedic-astro-skills` 的架构思想：Reader 负责数据入口，Core 负责核心分析，专题 Skill 继承 Core 结论，Rectifier 独立校时，Report 做最终整合。参考仅限项目分层与数据流，不复制吠陀占星内容。
+
+## 计算体系
+
+本项目约定盘面计算使用 **Zheng’an ancient lunar mansion boundaries with precession**。Reader 在记录盘面来源时，应优先标注排盘软件、宿界体系、岁差处理方式和可信度。
+
+| Lunar mansion | Boundary |
+|---|---:|
+| Ashwini | 15° |
+| Bharani | 26.5° |
+| Krittika | 42.03° |
+| Rohini | 53.1° |
+| Mrigashira | 70.16° |
+| Ardra | 71.08° |
+| Punarvasu | 81.02° |
+| Pushya | 113.73° |
+| Ashlesha | 115.94° |
+| Magha | 128.96° |
+| Purva Phalguni | 135.15° |
+| Uttara Phalguni | 152.35° |
+| Hasta | 170.89° |
+| Chitra | 188.07° |
+| Swati | 200.03° |
+| Vishakha | 208.93° |
+| Anuradha | 225.21° |
+| Jyeshtha | 230.7° |
+| Mula | 236.98° |
+| Purva Ashadha | 255.74° |
+| Uttara Ashadha | 265.93° |
+| Abhijit | 290.6° |
+| Shravana | 297.84° |
+| Dhanishta | 308.89° |
+| Shatabhisha | 317.7° |
+| Purva Bhadrapada | 333.06° |
+| Uttara Bhadrapada | 349.97° |
+| Revati | 358.44° |
+
+## 为什么不是一个 Skill
+
+七政四余的任务天然分层：学习教材、读盘提取、原局分析、专题判断、生时校正和报告整合需要不同的输入、校验和安全边界。把所有内容塞进一个 Skill 会让 Reader 误做解读、专题绕过数据契约、输出口径不一致。本项目用 12 个 Skill 分担职责，确保每一步都有明确上游、下游和限制。
+
+## 项目架构图
+
+```text
+用户问题 / 用户盘面 / PDF教材
+        |
+        v
+qz-study：教材学习、术语解释、学习路线
+        |
+        v
+qz-reader：读盘、提取、校验
+        |
+        v
+qz_structured_data.md
+        |
+        v
+qz-core：太极、宫度、五行、体用、喜忌、原局、运势
+        |
+        v
+qz-love / qz-wealth / qz-health / qz-career / qz-children / qz-lawsuit / qz-election / qz-rectifier
+        |
+        v
+qz-report：整合报告
+```
+
+## 每个 Skill 的职责
+
+| Skill | 职责 |
+|---|---|
+| qz-study | 教材学习、术语解释、章节摘要、记忆卡和学习路线，不正式断盘。 |
+| qz-reader | 从 PDF、截图或文本中提取盘面数据，校验并输出 `qz_structured_data.md`，不解读吉凶。 |
+| qz-core | 基于 Reader 数据做原局核心分析，输出 `qz_core_report.md`。 |
+| qz-love | 感情、婚姻、桃花、合盘专题，继承 Core 结论。 |
+| qz-wealth | 财运、资产、田宅、收入、破财专题，避免投资建议。 |
+| qz-health | 疾病与健康取象专题，只作传统术数参考，不作医学诊断。 |
+| qz-career | 事业、官禄、工作、名望、升迁专题。 |
+| qz-children | 子女、生育与亲子关系专题，涉及健康时提醒就医。 |
+| qz-lawsuit | 官非、纠纷、合同和法律风险取象，提醒咨询律师。 |
+| qz-election | 择日流程，兼顾现实约束，不保证必吉。 |
+| qz-rectifier | 生时校正，收集事件并比较候选时辰，不强行定时。 |
+| qz-report | 整合 Core 和专题报告，统一口径，不新增无来源结论。 |
+
+## 推荐使用流程
+
+```text
+学习教材 → qz-study
+读盘提取 → qz-reader
+核心分析 → qz-core
+专题分析 → qz-love / qz-wealth / qz-health / qz-career / qz-children / qz-lawsuit / qz-election / qz-rectifier
+报告整合 → qz-report
+```
+
+## 数据流转说明
+
+1. `qz-reader` 生成 `qz_structured_data.md`，字段必须符合 `shared/contracts/qz_structured_data_contract.md`。
+2. `qz-core` 读取结构化数据，先检查完整性，再分析太极、命身、宫度、星曜、五行、体用、喜忌和运势引动。
+3. 专题 Skill 必须读取 `qz_structured_data.md` 与 `qz_core_report.md`，不能绕过 Reader/Core 自行下断语。
+4. `qz-report` 只整合既有报告，保留支持因素、制约因素、缺失数据和不确定项。
+
+## 安装方式
+
+根据本地环境调整路径。
+
+### Antigravity
+
+```bash
+cp -r qizheng-siyu-skills/antigravity/skills/* ~/.antigravity/skills/
+```
+
+部分 Antigravity 工作区也可使用 workspace 级 `.agents/skills/`，请按本地版本文档调整。
+
+### Claude Code
+
+```bash
+cp -r qizheng-siyu-skills/claude-code/skills/* ~/.claude/skills/
+cp qizheng-siyu-skills/claude-code/CLAUDE.md ./CLAUDE.md
+cp -r qizheng-siyu-skills/claude-code/.claude/commands/* ./.claude/commands/
+```
+
+### Codex
+
+```bash
+cp -r qizheng-siyu-skills/codex/skills/* ~/.codex/skills/
+```
+
+### ChatGPT
+
+ChatGPT 有两条路径：
+
+```text
+ChatGPT Skills：上传 chatgpt/skills/ 下的 12 个 Skill。
+Custom GPT：把 chatgpt/custom-gpt-instructions.md 放入 Instructions，并按 chatgpt/knowledge-files.md 上传 Knowledge。
+```
+
+### Cursor
+
+Cursor 原生入口是项目规则。本项目已提供：
+
+```text
+.cursor/rules/qz-router.mdc
+.cursor/rules/qz-data-contract.mdc
+.cursor/rules/qz-safety.mdc
+.cursor/rules/qz-platform-files.mdc
+```
+
+在 Cursor 中打开本仓库即可读取这些规则。若复制到其他项目，请同步 `.cursor/rules/` 和需要的 shared references/contracts。
+
+## 平台适配差异
+
+| 平台 | 本项目入口 | 原生形态 | 说明 |
+|---|---|---|---|
+| Antigravity | `antigravity/skills/` | `SKILL.md` + resources/scripts/examples | 主 Skill 目录。 |
+| Claude Code | `claude-code/skills/`、`claude-code/CLAUDE.md`、`claude-code/.claude/commands/` | Skill 镜像 + 项目记忆 + slash commands | 同时支持 Skill 风格和 Claude Code 命令入口。 |
+| Codex | `codex/skills/` | Agent Skills | 与 Antigravity 主目录保持镜像。 |
+| ChatGPT | `chatgpt/skills/`、`chatgpt/custom-gpt-instructions.md` | ChatGPT Skills 或 Custom GPT | Skills 逐个上传；Custom GPT 需手动配置 Instructions/Knowledge。 |
+| Cursor | `.cursor/rules/`、`cursor/README.md` | `.mdc` Project Rules | Cursor 不以 `SKILL.md` 为主要触发入口，使用规则文件路由。 |
+
+## 测试方式
+
+```bash
+python qizheng-siyu-skills/shared/scripts/quality_check.py
+python -m pytest qizheng-siyu-skills/shared/tests
+```
+
+## 如何添加新专题 Skill
+
+1. 在 `antigravity/skills/` 下创建 `qz-new-topic/`，包含 `SKILL.md`、`resources/` 和 `examples/`。
+2. 在 `SKILL.md` 中声明必须读取 `qz_structured_data.md` 和 `qz_core_report.md`。
+3. 在 `shared/references/topic_index_full.md` 增加专题入口。
+4. 运行 `python qizheng-siyu-skills/shared/scripts/sync_skills.py --targets claude-code codex chatgpt --yes` 同步各 Skill 镜像目录。
+5. 运行质量检查和测试。
+
+## 版权与使用范围提醒
+
+项目代码和整理框架可按 `LICENSE` 使用。原始 PDF 教材版权归原权利人所有，本项目不重新分发 PDF 原文。生成的参考资料仅用于个人学习、摘要、索引和工作流辅助。
+
+## 安全与谨慎表达规范
+
+所有命理输出必须区分“教材明确内容”“整理后的分析框架”“模型推理”“不确定项”。涉及疾病、法律、投资、心理等高风险问题时，只能作为传统术数取象参考，并提醒用户咨询医生、律师、持牌财务顾问或心理咨询专业人士。
+
+本项目不生成 zip，直接使用完整项目目录。

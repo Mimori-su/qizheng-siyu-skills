@@ -1,0 +1,28 @@
+---
+description: Route 七政四余 requests to the correct qizheng-siyu-skills workflow and enforce Reader/Core/topic boundaries.
+alwaysApply: true
+---
+
+# 七政四余工作流路由
+
+本仓库是 `qizheng-siyu-skills` 多 Skill 项目。处理七政四余任务时按以下顺序工作：
+
+```text
+学习教材 -> qz-study
+读盘提取 -> qz-reader
+核心分析 -> qz-core
+专题分析 -> qz-love / qz-wealth / qz-health / qz-career / qz-children / qz-lawsuit / qz-election / qz-rectifier
+报告整合 -> qz-report
+```
+
+## 路由规则
+
+- 术语解释、课程总结、学习路线：使用 `antigravity/skills/qz-study` 或 shared references。
+- 盘面 PDF、截图、粘贴文本提取：使用 `qz-reader`，只生成 `qz_structured_data.md`，不解读。
+- 原局整体结构：必须先有 `qz_structured_data.md`，再使用 `qz-core`。
+- 感情、财运、健康、事业、子女、官非、择日、校时：必须继承 Reader/Core 输出。
+- 完整报告：只整合已有 Core 和专题报告，不新增无来源结论。
+
+## 输出要求
+
+所有报告必须列支持因素、制约因素、缺失数据、不确定项和谨慎结论。
