@@ -1,6 +1,6 @@
 {
-  "last_turn_at": "2026-06-05T14:58:24.542Z",
-  "turn_count": 7,
-  "last_progress_at": "2026-06-05T14:58:24.542Z",
-  "last_agent_output": "已在 [README.md](/Users/zhengrongkai/Downloads/qizheng-siyu-skills/README.md) 补充：\n\n- 英文项目定位：Qizheng Si"
+  "last_turn_at": "2026-06-07T10:31:11.647Z",
+  "turn_count": 11,
+  "last_progress_at": "2026-06-07T10:31:11.647Z",
+  "last_agent_output": "对，你说得更准。\n\n教材里的顺序应当是：\n\n```text\nReader 读盘结构化\n→ Core 定太极、命身\n→ 尽三起手：先论宫组合\n→ 尽三之后看度层：命度、命主星所在度、身度\n→ 按四度相通"
 }
