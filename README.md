@@ -60,7 +60,7 @@ qz-reader：读盘、提取、校验
 qz_structured_data.md
         |
         v
-qz-core：太极、宫度、五行、体用、喜忌、原局、运势
+qz-core：太极命身、尽三起手、三度/同度复核、宫度星、五行体用喜忌、原局、运势
         |
         v
 qz-love / qz-wealth / qz-health / qz-career / qz-children / qz-lawsuit / qz-election / qz-rectifier
@@ -75,7 +75,7 @@ qz-report：整合报告
 |---|---|
 | qz-study | 教材学习、术语解释、章节摘要、记忆卡和学习路线，不正式断盘。 |
 | qz-reader | 从 PDF、截图或文本中提取盘面数据，校验并输出 `qz_structured_data.md`，不解读吉凶。 |
-| qz-core | 基于 Reader 数据做原局核心分析，输出 `qz_core_report.md`。 |
+| qz-core | 基于 Reader 数据做原局核心分析，先定太极命身，再以尽三起手，继而看三度/同度复核，输出 `qz_core_report.md`。 |
 | qz-love | 感情、婚姻、桃花、合盘专题，继承 Core 结论。 |
 | qz-wealth | 财运、资产、田宅、收入、破财专题，避免投资建议。 |
 | qz-health | 疾病与健康取象专题，只作传统术数参考，不作医学诊断。 |
@@ -99,7 +99,7 @@ qz-report：整合报告
 ## 数据流转说明
 
 1. `qz-reader` 生成 `qz_structured_data.md`，字段必须符合 `shared/contracts/qz_structured_data_contract.md`。
-2. `qz-core` 读取结构化数据，先检查完整性，再分析太极、命身、宫度、星曜、五行、体用、喜忌和运势引动。
+2. `qz-core` 读取结构化数据，先检查完整性，再定太极与命身；正式解盘起手先看尽三。尽三是论宫组合，尽三后接着看命度、命主星所在度、身度等度层，按四度相通/同度感应复核尽三结论，再分层分析星曜、神煞、五行、体用、喜忌和运势引动。
 3. 专题 Skill 必须读取 `qz_structured_data.md` 与 `qz_core_report.md`，不能绕过 Reader/Core 自行下断语。
 4. `qz-report` 只整合既有报告，保留支持因素、制约因素、缺失数据和不确定项。
 
