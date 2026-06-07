@@ -10,36 +10,36 @@ Skills for Chinese traditional astrology’s **Qizheng Siyu**, developed based o
 
 本项目约定盘面计算使用 **Zheng’an ancient lunar mansion boundaries with precession**。Reader 在记录盘面来源时，应优先标注排盘软件、宿界体系、岁差处理方式和可信度。
 
-| Lunar mansion | Boundary |
+| 星宿 | 度数 |
 |---|---:|
-| Ashwini | 15° |
-| Bharani | 26.5° |
-| Krittika | 42.03° |
-| Rohini | 53.1° |
-| Mrigashira | 70.16° |
-| Ardra | 71.08° |
-| Punarvasu | 81.02° |
-| Pushya | 113.73° |
-| Ashlesha | 115.94° |
-| Magha | 128.96° |
-| Purva Phalguni | 135.15° |
-| Uttara Phalguni | 152.35° |
-| Hasta | 170.89° |
-| Chitra | 188.07° |
-| Swati | 200.03° |
-| Vishakha | 208.93° |
-| Anuradha | 225.21° |
-| Jyeshtha | 230.7° |
-| Mula | 236.98° |
-| Purva Ashadha | 255.74° |
-| Uttara Ashadha | 265.93° |
-| Abhijit | 290.6° |
-| Shravana | 297.84° |
-| Dhanishta | 308.89° |
-| Shatabhisha | 317.7° |
-| Purva Bhadrapada | 333.06° |
-| Uttara Bhadrapada | 349.97° |
-| Revati | 358.44° |
+| 娄 | 15° |
+| 胃 | 26.5° |
+| 昴 | 42.03° |
+| 毕 | 53.1° |
+| 觜 | 70.16° |
+| 参 | 71.08° |
+| 井 | 81.02° |
+| 鬼 | 113.73° |
+| 柳 | 115.94° |
+| 星 | 128.96° |
+| 张 | 135.15° |
+| 翼 | 152.35° |
+| 轸 | 170.89° |
+| 角 | 188.07° |
+| 亢 | 200.03° |
+| 氐 | 208.93° |
+| 房 | 225.21° |
+| 心 | 230.7° |
+| 尾 | 236.98° |
+| 箕 | 255.74° |
+| 斗 | 265.93° |
+| 牛 | 290.6° |
+| 女 | 297.84° |
+| 虚 | 308.89° |
+| 危 | 317.7° |
+| 室 | 333.06° |
+| 壁 | 349.97° |
+| 奎 | 358.44° |
 
 ## 为什么不是一个 Skill
 
