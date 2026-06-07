@@ -1,45 +1,43 @@
 # qizheng-siyu-skills
 
-`qizheng-siyu-skills` 是一个七政四余多 Skill AI 辅助项目，用于把《九紫辰木马七政四余培训教材.pdf》的学习资料、盘面读取、数据契约、核心分析流程和专题分析拆成可协作的 Skill 体系。项目提供 ChatGPT / Cursor / Codex / Antigravity / Claude Code 五类智能体适配入口。
+`qizheng-siyu-skills` 是一个七政四余多 Skill AI 辅助项目，用于把七政四余相关学习资料、盘面读取、数据契约、核心分析流程和专题分析拆成可协作的 Skill 体系。项目提供 ChatGPT / Cursor / Codex / Antigravity / Claude Code 五类智能体适配入口。
 
-Skills for Chinese traditional astrology’s **Qizheng Siyu**, developed based on the **Guolao Xingzong** course by **Jiu Zichen**, with charts calculated using **Zheng’an ancient lunar mansions + precession**.
-
-本项目参考 `CNWU16/vedic-astro-skills` 的架构思想：Reader 负责数据入口，Core 负责核心分析，专题 Skill 继承 Core 结论，Rectifier 独立校时，Report 做最终整合。参考仅限项目分层与数据流，不复制吠陀占星内容。
+本项目的架构思想：Reader 负责数据入口，Core 负责核心分析，专题 Skill 继承 Core 结论，Rectifier 独立校时，Report 做最终整合。
 
 ## 计算体系
 
-本项目约定盘面计算使用 **Zheng’an ancient lunar mansion boundaries with precession**。Reader 在记录盘面来源时，应优先标注排盘软件、宿界体系、岁差处理方式和可信度。
+本项目约定盘面计算使用郑案古宿+岁差。Reader 在记录盘面来源时，应优先标注排盘软件、宿界体系、岁差处理方式和可信度。
 
-| 星宿 | 度数 |
-|---|---:|
-| 娄 | 15° |
-| 胃 | 26.5° |
-| 昴 | 42.03° |
-| 毕 | 53.1° |
-| 觜 | 70.16° |
-| 参 | 71.08° |
-| 井 | 81.02° |
-| 鬼 | 113.73° |
-| 柳 | 115.94° |
-| 星 | 128.96° |
-| 张 | 135.15° |
-| 翼 | 152.35° |
-| 轸 | 170.89° |
-| 角 | 188.07° |
-| 亢 | 200.03° |
-| 氐 | 208.93° |
-| 房 | 225.21° |
-| 心 | 230.7° |
-| 尾 | 236.98° |
-| 箕 | 255.74° |
-| 斗 | 265.93° |
-| 牛 | 290.6° |
-| 女 | 297.84° |
-| 虚 | 308.89° |
-| 危 | 317.7° |
-| 室 | 333.06° |
-| 壁 | 349.97° |
-| 奎 | 358.44° |
+| 星宿 |    度数 |
+| ---- | ------: |
+| 娄   |     15° |
+| 胃   |   26.5° |
+| 昴   |  42.03° |
+| 毕   |   53.1° |
+| 觜   |  70.16° |
+| 参   |  71.08° |
+| 井   |  81.02° |
+| 鬼   | 113.73° |
+| 柳   | 115.94° |
+| 星   | 128.96° |
+| 张   | 135.15° |
+| 翼   | 152.35° |
+| 轸   | 170.89° |
+| 角   | 188.07° |
+| 亢   | 200.03° |
+| 氐   | 208.93° |
+| 房   | 225.21° |
+| 心   |  230.7° |
+| 尾   | 236.98° |
+| 箕   | 255.74° |
+| 斗   | 265.93° |
+| 牛   |  290.6° |
+| 女   | 297.84° |
+| 虚   | 308.89° |
+| 危   |  317.7° |
+| 室   | 333.06° |
+| 壁   | 349.97° |
+| 奎   | 358.44° |
 
 ## 为什么不是一个 Skill
 
@@ -71,20 +69,20 @@ qz-report：整合报告
 
 ## 每个 Skill 的职责
 
-| Skill | 职责 |
-|---|---|
-| qz-study | 教材学习、术语解释、章节摘要、记忆卡和学习路线，不正式断盘。 |
-| qz-reader | 从 PDF、截图或文本中提取盘面数据，校验并输出 `qz_structured_data.md`，不解读吉凶。 |
-| qz-core | 基于 Reader 数据做原局核心分析，先定太极命身，再以尽三起手，继而看三度/同度复核，输出 `qz_core_report.md`。 |
-| qz-love | 感情、婚姻、桃花、合盘专题，继承 Core 结论。 |
-| qz-wealth | 财运、资产、田宅、收入、破财专题，避免投资建议。 |
-| qz-health | 疾病与健康取象专题，只作传统术数参考，不作医学诊断。 |
-| qz-career | 事业、官禄、工作、名望、升迁专题。 |
-| qz-children | 子女、生育与亲子关系专题，涉及健康时提醒就医。 |
-| qz-lawsuit | 官非、纠纷、合同和法律风险取象，提醒咨询律师。 |
-| qz-election | 择日流程，兼顾现实约束，不保证必吉。 |
-| qz-rectifier | 生时校正，收集事件并比较候选时辰，不强行定时。 |
-| qz-report | 整合 Core 和专题报告，统一口径，不新增无来源结论。 |
+| Skill        | 职责                                                         |
+| ------------ | ------------------------------------------------------------ |
+| qz-study     | 教材学习、术语解释、章节摘要、记忆卡和学习路线，不正式断盘。 |
+| qz-reader    | 从 PDF、截图或文本中提取盘面数据，校验并输出 `qz_structured_data.md`，不解读吉凶。 |
+| qz-core      | 基于 Reader 数据做原局核心分析，先定太极命身，再以尽三起手，继而看三度/同度复核，输出 `qz_core_report.md`。 |
+| qz-love      | 感情、婚姻、桃花、合盘专题，继承 Core 结论。                 |
+| qz-wealth    | 财运、资产、田宅、收入、破财专题，避免投资建议。             |
+| qz-health    | 疾病与健康取象专题，只作传统术数参考，不作医学诊断。         |
+| qz-career    | 事业、官禄、工作、名望、升迁专题。                           |
+| qz-children  | 子女、生育与亲子关系专题，涉及健康时提醒就医。               |
+| qz-lawsuit   | 官非、纠纷、合同和法律风险取象，提醒咨询律师。               |
+| qz-election  | 择日流程，兼顾现实约束，不保证必吉。                         |
+| qz-rectifier | 生时校正，收集事件并比较候选时辰，不强行定时。               |
+| qz-report    | 整合 Core 和专题报告，统一口径，不新增无来源结论。           |
 
 ## 推荐使用流程
 
@@ -153,13 +151,13 @@ Cursor 原生入口是项目规则。本项目已提供：
 
 ## 平台适配差异
 
-| 平台 | 本项目入口 | 原生形态 | 说明 |
-|---|---|---|---|
-| Antigravity | `antigravity/skills/` | `SKILL.md` + resources/scripts/examples | 主 Skill 目录。 |
-| Claude Code | `claude-code/skills/`、`claude-code/CLAUDE.md`、`claude-code/.claude/commands/` | Skill 镜像 + 项目记忆 + slash commands | 同时支持 Skill 风格和 Claude Code 命令入口。 |
-| Codex | `codex/skills/` | Agent Skills | 与 Antigravity 主目录保持镜像。 |
-| ChatGPT | `chatgpt/skills/`、`chatgpt/custom-gpt-instructions.md` | ChatGPT Skills 或 Custom GPT | Skills 逐个上传；Custom GPT 需手动配置 Instructions/Knowledge。 |
-| Cursor | `.cursor/rules/`、`cursor/README.md` | `.mdc` Project Rules | Cursor 不以 `SKILL.md` 为主要触发入口，使用规则文件路由。 |
+| 平台        | 本项目入口                                                   | 原生形态                                | 说明                                                         |
+| ----------- | ------------------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ |
+| Antigravity | `antigravity/skills/`                                        | `SKILL.md` + resources/scripts/examples | 主 Skill 目录。                                              |
+| Claude Code | `claude-code/skills/`、`claude-code/CLAUDE.md`、`claude-code/.claude/commands/` | Skill 镜像 + 项目记忆 + slash commands  | 同时支持 Skill 风格和 Claude Code 命令入口。                 |
+| Codex       | `codex/skills/`                                              | Agent Skills                            | 与 Antigravity 主目录保持镜像。                              |
+| ChatGPT     | `chatgpt/skills/`、`chatgpt/custom-gpt-instructions.md`      | ChatGPT Skills 或 Custom GPT            | Skills 逐个上传；Custom GPT 需手动配置 Instructions/Knowledge。 |
+| Cursor      | `.cursor/rules/`、`cursor/README.md`                         | `.mdc` Project Rules                    | Cursor 不以 `SKILL.md` 为主要触发入口，使用规则文件路由。    |
 
 ## 测试方式
 
@@ -175,13 +173,3 @@ python -m pytest qizheng-siyu-skills/shared/tests
 3. 在 `shared/references/topic_index_full.md` 增加专题入口。
 4. 运行 `python qizheng-siyu-skills/shared/scripts/sync_skills.py --targets claude-code codex chatgpt --yes` 同步各 Skill 镜像目录。
 5. 运行质量检查和测试。
-
-## 版权与使用范围提醒
-
-项目代码和整理框架可按 `LICENSE` 使用。原始 PDF 教材版权归原权利人所有，本项目不重新分发 PDF 原文。生成的参考资料仅用于个人学习、摘要、索引和工作流辅助。
-
-## 安全与谨慎表达规范
-
-所有命理输出必须区分“教材明确内容”“整理后的分析框架”“模型推理”“不确定项”。涉及疾病、法律、投资、心理等高风险问题时，只能作为传统术数取象参考，并提醒用户咨询医生、律师、持牌财务顾问或心理咨询专业人士。
-
-本项目不生成 zip，直接使用完整项目目录。
