@@ -53,7 +53,9 @@ qz_core_report.md。
 - `resources/palace_framework.md`
 - `resources/degree_framework.md`
 - `resources/wuxing_tiyong_xiji.md`
+- `resources/wuxing_per_ming.md`
 - `resources/original_vs_transit.md`
+- `resources/transit_year_rules.md`
 - `resources/qa_rules.md`
 - `resources/report_rules.md`
 

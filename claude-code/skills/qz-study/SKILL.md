@@ -51,6 +51,7 @@ PDF 整理资料、shared references、用户术语或章节问题。
 - `resources/learning_routes.md`
 - `resources/concept_cards.md`
 - `resources/chapter_qa.md`
+- `resources/wuxing_per_ming.md`
 
 ## Output format
 
